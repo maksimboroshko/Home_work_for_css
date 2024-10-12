@@ -1,23 +1,20 @@
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import com.codeborne.selenide.ElementsCollection;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class TestForCssHw {
 
     @BeforeAll
-    static void beforeAll(){
+    static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com/";
         Configuration.browserSize = "1920 x 1080";
         Configuration.pageLoadStrategy = "eager";
         Configuration.holdBrowserOpen = true;
         Configuration.timeout = 5000;
-
     }
-
 
     @Test
     void formTest() {
@@ -25,12 +22,11 @@ public class TestForCssHw {
         $("#firstName").setValue("Test");
         $("#lastName").setValue("Testov");
         $("#userEmail").setValue("test@gmail.com");
-       // $("#gender-radio-1").press;
         $("#userNumber").setValue("77777777777");
-        // $("#gender-radio-1").press;
         $("#currentAddress").setValue("testovoeSms");
+      //  $("#genterWrapper #gender-radio-3").click(); don't work
+        $("#subjectsContainer").setValue("testovoeSms");
 
 
-      //  $("[id=search]").shouldHave(text("https://selenide.org"));
     }
 }
