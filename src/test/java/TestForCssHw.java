@@ -3,6 +3,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import java.io.File;
+
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 public class TestForCssHw {
@@ -20,6 +22,8 @@ public class TestForCssHw {
     @Test
     void formTest() {
         open("automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         File fileToUpload = new File("/Users/maksimborosko/Desktop/test.png");
         $("#uploadPicture").uploadFile(fileToUpload);
         $("#firstName").setValue("Test");
@@ -36,8 +40,33 @@ public class TestForCssHw {
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("#react-select-4-input").setValue("Noida").pressEnter();
         $("#subjectsInput").setValue("English").pressEnter();
-
         $("#submit").scrollTo().doubleClick();
+
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+        $("thead th:nth-of-type(1)").shouldHave(text("Label"));
+        $("thead th:nth-of-type(2)").shouldHave(text("Values"));
+
+        $("tbody tr:nth-of-type(1) td:nth-of-type(2)").shouldHave(text("Test Testov"));
+        $("tbody tr:nth-of-type(2) td:nth-of-type(2)").shouldHave(text("test@gmail.com"));
+        $("tbody tr:nth-of-type(3) td:nth-of-type(2)").shouldHave(text("Male"));
+        $("tbody tr:nth-of-type(4) td:nth-of-type(2)").shouldHave(text("7777777777"));
+        $("tbody tr:nth-of-type(5) td:nth-of-type(2)").shouldHave(text("18 February,2000"));
+        $("tbody tr:nth-of-type(6) td:nth-of-type(2)").shouldHave(text("English"));
+        $("tbody tr:nth-of-type(7) td:nth-of-type(2)").shouldHave(text("Sports, Reading, Music"));
+        $("tbody tr:nth-of-type(8) td:nth-of-type(2)").shouldHave(text("test.png"));
+        $("tbody tr:nth-of-type(9) td:nth-of-type(2)").shouldHave(text("testovoeSms"));
+        $("tbody tr:nth-of-type(10) td:nth-of-type(2)").shouldHave(text("NCR Noida"));
+        $("#closeLargeModal").scrollTo().click();
+
+
+
+
+
+
+
+
+
+
 
 
 
