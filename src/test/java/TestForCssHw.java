@@ -46,7 +46,7 @@ public class TestForCssHw {
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("#react-select-4-input").setValue("Noida").pressEnter();
         $("#subjectsInput").setValue("English").pressEnter();
-        $("#submit").scrollTo().doubleClick();
+        $("#submit").scrollTo().click();
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $("thead th:nth-of-type(1)").shouldHave(text("Label"));
