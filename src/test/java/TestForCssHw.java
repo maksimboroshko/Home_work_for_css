@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class TestForCssHw {
@@ -14,7 +15,7 @@ public class TestForCssHw {
         Configuration.baseUrl = "https://demoqa.com/";
         Configuration.browserSize = "1920 x 1080";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = false;
+        Configuration.holdBrowserOpen = true;
         Configuration.timeout = 5000;
 
     }
@@ -24,14 +25,19 @@ public class TestForCssHw {
         open("automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
-        File fileToUpload = new File("/Users/maksimborosko/Desktop/test.png");
-        $("#uploadPicture").uploadFile(fileToUpload);
+        $("#uploadPicture").uploadFromClasspath("test.png");
         $("#firstName").setValue("Test");
         $("#lastName").setValue("Testov");
         $("#userEmail").setValue("test@gmail.com");
         $("#userNumber").setValue("77777777777");
-        $("#dateOfBirthInput").sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT, Keys.END), "1");
-        $("#dateOfBirthInput").setValue("8 Feb 2000").pressEnter();
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker__month-select").$(byText("February")).click();
+        $(".react-datepicker__year-select").$(byText("2000")).click();
+        $(".react-datepicker__day.react-datepicker__day--018").click();
+
+
+        //$("#dateOfBirthInput").sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT, Keys.END), "1");
+        //$("#dateOfBirthInput").setValue("8 Feb 2000").pressEnter();
         $("#currentAddress").setValue("testovoeSms");
         $("label[for='gender-radio-1']").click();
         $("label[for='hobbies-checkbox-1']").scrollTo().click();
