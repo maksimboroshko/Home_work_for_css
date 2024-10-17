@@ -2,12 +2,9 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import java.time.Duration;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class TestHover {
@@ -33,7 +30,7 @@ public class TestHover {
     }
 
     @Test
-    void findEnterprize () {
+    void findEnterprize() {
         open("");
         $$("ul li").findBy(Condition.text(textSolutions())).hover();
         $$("ul li a").findBy(Condition.text(textEnterprise())).click();
