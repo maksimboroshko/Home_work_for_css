@@ -14,7 +14,7 @@ public class TestCssForFig {
         Configuration.baseUrl = "https://github.com/";
         Configuration.browserSize = "1920 x 1080";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = false;
         Configuration.timeout = 5000;
     }
 
