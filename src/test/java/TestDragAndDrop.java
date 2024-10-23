@@ -18,7 +18,9 @@ public class TestDragAndDrop{
 
     @Test
     void dragAndDropTest() {
-        open("/drag_and_drop");
+        open("drag_and_drop");
+        $("#column-a").shouldHave(text("a"));
+        $("#column-b").shouldHave(text("b"));
         //actions().moveToElement($("#column-a")).clickAndHold().moveToElement($("#column-b")).release().perform();
         $("#column-b").dragAndDrop(DragAndDropOptions.to($("#column-a")));
         $("#column-b").shouldHave(text("a"));
